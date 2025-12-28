@@ -93,6 +93,10 @@ describe("Auth flow (integration)", () => {
       expect(registerUser).toHaveBeenCalledWith("Uday", "u@x.com", "password123");
     });
 
+    await waitFor(() => {
+      expect(window.location.pathname).toBe("/login");
+    });
+
     // After successful register, your RegisterForm navigates to "/login"
     // Verify we are on login page by checking login fields exist
     expect(await screen.findByLabelText(/email/i)).toBeInTheDocument();
