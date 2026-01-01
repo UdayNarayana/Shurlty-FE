@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Links from "./pages/Links";
 import LoginForm from "./components/auth/LoginForm/LoginForm";
 import RegisterForm from "./components/auth/RegisterForm/RegisterForm";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
 	return (
@@ -20,7 +21,11 @@ function App() {
 					<Route path="/" element={<Home />} />
 					<Route path="/login" element={<LoginForm />} />
 					<Route path="/register" element={<RegisterForm />} />
-					<Route path="/links" element={<Links />} />
+
+					{/* Protected routes */}
+					<Route element={<ProtectedRoute />}>
+						<Route path="/links" element={<Links />} />
+					</Route>
 
 					{/* fallback */}
 					<Route path="*" element={<Navigate to="/" replace />} />
