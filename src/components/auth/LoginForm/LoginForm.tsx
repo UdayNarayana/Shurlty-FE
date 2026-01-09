@@ -4,14 +4,14 @@ import styles from "./LoginForm.module.css";
 import { loginUser } from "../../../services/authService";
 import { setToken } from "../../../utils/token";
 
-export default function LoginForm() {
+const LoginForm = () => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | null>(null);
 
-	async function submitHandler(e: React.FormEvent) {
+	const submitHandler = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setError(null);
 
@@ -74,3 +74,5 @@ export default function LoginForm() {
 		</div>
 	);
 }
+
+export default LoginForm;
